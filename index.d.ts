@@ -1,15 +1,21 @@
+/// <reference types="node"/>
+import { PDFOptions } from "puppeteer"
+
 /**
-My awesome module.
-@param input Lorem ipsum.
-@param postfix Lorem ipsum.
+Generate a pdf from html.
+@param html The html to generate the pdf from.
+@param options [Options to pass to puppeteer](https://github.com/puppeteer/puppeteer/blob/v5.3.1/docs/api.md#pagepdfoptions).
 @example
 ```
-const theModule = require("the-module")
+const { promises: fs } = require("fs")
+const pdfly = require(".")
 
-theModule("unicorns")
-//=> "unicorns & rainbows"
+const html = await fs.readFile("file.html", "utf8")
+const pdf = await pdfly(html)
+
+await fs.writeFile("output.pdf", pdf)
 ```
 */
-declare function theModule(input: string, { postfix }: { postfix?: string }): string
+declare function pdfly(html: string, options?: PDFOptions): Promise<Buffer>
 
-export = theModule
+export = pdfly

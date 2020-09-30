@@ -1,41 +1,39 @@
-# the-module [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/the-module/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/the-module)
+# pdfly [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/pdfly/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/pdfly)
 
-My awesome module.
+Generate a pdf from html.
 
-[![NPM Badge](https://nodei.co/npm/the-module.png)](https://npmjs.com/package/the-module)
+[![NPM Badge](https://nodei.co/npm/pdfly.png)](https://npmjs.com/package/pdfly)
 
 ## Install
 
 ```sh
-npm install the-module
+npm install pdfly
 ```
 
 ## Usage
 
 ```js
-const theModule = require("the-module")
+const { promises: fs } = require("fs")
+const pdfly = require(".")
 
-theModule("unicorns")
-//=> "unicorns & rainbows"
+const html = await fs.readFile("file.html", "utf8")
+const pdf = await pdfly(html)
+
+await fs.writeFile("output.pdf", pdf)
 ```
 
 ## API
 
-### theModule(input, options?)
+### pdfly(html, options?)
 
-#### input
+#### html
 
 Type: `string`
 
-Lorem ipsum.
+The html to generate the pdf from.
 
 #### options
 
 Type: `object`
 
-##### postfix
-
-Type: `string`\
-Default: `rainbows`
-
-Lorem ipsum.
+[Options to pass to puppeteer](https://github.com/puppeteer/puppeteer/blob/v5.3.1/docs/api.md#pagepdfoptions).

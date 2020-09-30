@@ -1,8 +1,8 @@
 {
-	"name": "the-module",
+	"name": "pdfly",
 	"version": "0.0.0",
-	"description": "My awesome module.",
-	"repository": "https://github.com/Richienb/the-module.git",
+	"description": "Generate a pdf from html.",
+	"repository": "https://github.com/Richienb/pdfly.git",
 	"author": "Richie Bendall <richiebendall@gmail.com>",
 	"license": "MIT",
 	"main": "index.js",
@@ -17,8 +17,17 @@
 		"lint": "xo",
 		"test": "xo && ava"
 	},
-	"keywords": [],
-	"dependencies": {},
+	"keywords": [
+		"html",
+		"pdf",
+		"convert",
+		"generate",
+		"scan",
+		"render"
+	],
+	"dependencies": {
+		"puppeteer": "^5.3.1"
+	},
 	"devDependencies": {
 		"ava": "^3.12.1",
 		"eslint-config-richienb": "^0.4.2",
